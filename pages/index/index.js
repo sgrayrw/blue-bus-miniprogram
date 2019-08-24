@@ -10,7 +10,7 @@ Page({
     // current relative timestamp in this week
     const now = new Date()
     // const timestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes()
-    const nowTimestamp = timestamp(1,8,0)
+    const nowTimestamp = timestamp(0,0,0)
 
     // init db
     wx.cloud.init()
