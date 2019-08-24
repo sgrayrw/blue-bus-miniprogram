@@ -8,7 +8,9 @@ Page({
   // TODO: corner case: after last event in the week, should return next week
   onLoad: function() {
     // current relative timestamp in this week
-    const now = timestamp()
+    const now = new Date()
+    // const timestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes()
+    const nowTimestamp = timestamp(1,8,0)
 
     // init db
     wx.cloud.init()
@@ -18,29 +20,27 @@ Page({
 
     // next event for hc
     db.collection("hc").where({
-      timestamp: _.gt(now)
+      timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
       success: function(res) {
-        _this.setData({nextTimeHC: formatTime(res.data[0])})
+        _this.setData({ nextTimeHC: formatTime(res.data[0]) })
       }
     })
 
     // next event for bmc
     db.collection("bmc").where({
-      timestamp: _.gt(now)
+      timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
       success: function (res) {
-        _this.setData({nextTimeBMC: formatTime(res.data[0])})
+        _this.setData({ nextTimeBMC: formatTime(res.data[0]) })
       }
     })
   },
 })
 
 // relative timestamp in this week
-function timestamp() {
-  const now = new Date()
-  // return now.getDay()*24*60 + now.getHours()*60 + now.getMinutes()
-  return 0
+function timestamp(day, hour, minute) {
+  let timestamp = day*24*60 + hour*60 + minute
 }
 
 // format output of a time record in db
