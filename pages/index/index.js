@@ -40,7 +40,7 @@ Page({
 function timestamp() {
   const now = new Date()
   // return now.getDay()*24*60 + now.getHours()*60 + now.getMinutes()
-  return 1900
+  return 0
 }
 
 // format output of a time record in db
