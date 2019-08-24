@@ -40,19 +40,19 @@ Page({
 
 // relative timestamp in this week
 function timestamp(day, hour, minute) {
-  let timestamp = day*24*60 + hour*60 + minute
+  return day*24*60 + hour*60 + minute
 }
 
 // format output of a time record in db
 function formatTime(time) {
   let day
-  if (time.day == 1) day = "Mon"
+  if (time.day == 0) day = "Sun"
+  else if (time.day == 1) day = "Mon"
   else if (time.day == 2) day = "Tue"
   else if (time.day == 3) day = "Wed"
   else if (time.day == 4) day = "Thu"
   else if (time.day == 5) day = "Fri"
   else if (time.day == 6) day = "Sat"
-  else if (time.day == 7) day = "Sun"
 
   return day + " " + time.hour + ":" + time.minute
 }
