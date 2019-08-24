@@ -1,3 +1,6 @@
 <view class="container">
-  <text class="greeting">Hello</text>
+  <text class="fromHC">Next from HC</text>
+  <text class="nextTimeHC">{{nextTimeHC}}</text>
+  <text class="fromBMC">Next from BMC</text>
+  <text class="nextTimeBMC">{{nextTimeBMC}}</text>
 </view>
