@@ -16,14 +16,13 @@ Page({
     wx.cloud.init()
     const db = wx.cloud.database()
     const _ = db.command
-    var _this = this // for accessing `this` within `success()`
 
     // next event for hc
     db.collection("hc").where({
       timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
       success: res => {
-        _this.setData({ nextTimeHC: formatTime(res.data[0]) })
+        this.setData({ nextTimeHC: formatTime(res.data[0]) })
       }
     })
 
@@ -32,7 +31,7 @@ Page({
       timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
       success: res => {
-        _this.setData({ nextTimeBMC: formatTime(res.data[0]) })
+        this.setData({ nextTimeBMC: formatTime(res.data[0]) })
       }
     })
   },
