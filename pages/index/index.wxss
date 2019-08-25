@@ -1,11 +1,14 @@
 .title {
   margin: 50rpx;
-  color: green;
+  color: black;
   font-size: 60rpx;
 }
 
 .time {
-  margin: 25rpx;
-  color: black;
   font-size: 50rpx;
+}
+
+.hint {
+  font-size: 30rpx;
+  color: grey;
 }
