@@ -21,6 +21,7 @@ Page({
     getNextTime(this, "bmc")    
   },
   
+  // disabled for now
   onPullDownRefresh: function() {
     this.onShow()
   },
