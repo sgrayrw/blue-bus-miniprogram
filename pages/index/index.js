@@ -16,9 +16,13 @@ Page({
   },
 
   onShow: function() {
-    // get next time for hc and bmc
+    wx.stopPullDownRefresh()
     getNextTime(this, "hc")
     getNextTime(this, "bmc")    
+  },
+  
+  onPullDownRefresh: function() {
+    this.onShow()
   },
 })
 
