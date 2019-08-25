@@ -9,8 +9,8 @@ Page({
   onLoad: function() {
     // current relative timestamp in this week
     const now = new Date()
-    // const timestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes()
-    const nowTimestamp = timestamp(0,0,0)
+    // const timestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
+    const nowTimestamp = timestamp(1,12,56)
 
     // init db
     wx.cloud.init()
@@ -53,5 +53,11 @@ function formatTime(time) {
   else if (time.day == 5) day = "Fri"
   else if (time.day == 6) day = "Sat"
 
-  return day + " " + time.hour + ":" + time.minute
+  let hour
+  // TODO: format hour
+
+  let minute = "" + time.minute
+  if (time.minute == 0) minute = "00"
+
+  return day + " " + time.hour + ":" + minute
 }
