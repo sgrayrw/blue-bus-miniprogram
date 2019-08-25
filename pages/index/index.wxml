@@ -1,6 +1,6 @@
 <view class="container">
-  <text>Next from HC</text>
-  <text>{{nextTimeHC}}</text>
-  <text>Next from BMC</text>
-  <text>{{nextTimeBMC}}</text>
+  <text class="title">Next from HC</text>
+  <text class="time">{{nextTimeHC}}</text>
+  <text class="title">Next from BMC</text>
+  <text class="time">{{nextTimeBMC}}</text>
 </view>

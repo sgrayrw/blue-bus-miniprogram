@@ -1,0 +1,11 @@
+.title {
+  margin: 50rpx;
+  color: green;
+  font-size: 50rpx;
+}
+
+.time {
+  margin: 25rpx;
+  color: black;
+  font-size: 40rpx;
+}
