@@ -4,7 +4,7 @@
     "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Blue Bus",
     "navigationBarTextStyle": "black"

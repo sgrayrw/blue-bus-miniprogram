@@ -4,15 +4,19 @@ Page({
     nextTimeBMC: "",
   },
 
+  onLoad: function() {
+    // init wxcloud
+    wx.cloud.init()
+  },
+
   // TODO: cutoff
   // TODO: Sat daytime HC stokes/south lot difference
-  onLoad: function() {
+  onShow: function() {
     // current relative timestamp in this week
     const now = new Date()
     const nowTimestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
 
-    // init db
-    wx.cloud.init()
+    // get db reference
     const db = wx.cloud.database()
     const _ = db.command
 
@@ -38,7 +42,8 @@ Page({
 
 // relative timestamp in this week
 function timestamp(day, hour, minute) {
-  return day*24*60 + hour*60 + minute
+  // return day*24*60 + hour*60 + minute
+  return Math.floor(Math.random(1) * 10000)
 }
 
 // format output of a time record in db
@@ -58,7 +63,7 @@ function formatTime(time) {
   }
 
   let minute = "" + time.minute
-  if (time.minute == 0) minute = "00"
+  if (time.minute < 10) minute = "0" + minute
 
   let day
   if (time.day == 0) day = "Sun"
