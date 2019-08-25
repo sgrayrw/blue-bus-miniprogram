@@ -5,12 +5,11 @@ Page({
   },
 
   // TODO: cutoff
-  // TODO: corner case: after last event in the week, should return next week
+  // TODO: Sat daytime HC stokes/south lot difference
   onLoad: function() {
     // current relative timestamp in this week
     const now = new Date()
-    // const timestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
-    const nowTimestamp = timestamp(1,12,56)
+    const nowTimestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
 
     // init db
     wx.cloud.init()
@@ -44,6 +43,23 @@ function timestamp(day, hour, minute) {
 
 // format output of a time record in db
 function formatTime(time) {
+  let hour, apm
+  if (time.hour < 12) {
+    hour = "" + time.hour
+    apm = "am"
+  } else if (time.hour < 24) {
+    hour = "" + (time.hour - 12)
+    apm = "pm"
+  } else {
+    // if hour >= 24, display it as on the next day
+    hour = "" + (time.hour - 24)
+    apm = "am"
+    time.day = (time.day + 1) % 7
+  }
+
+  let minute = "" + time.minute
+  if (time.minute == 0) minute = "00"
+
   let day
   if (time.day == 0) day = "Sun"
   else if (time.day == 1) day = "Mon"
@@ -53,11 +69,5 @@ function formatTime(time) {
   else if (time.day == 5) day = "Fri"
   else if (time.day == 6) day = "Sat"
 
-  let hour
-  // TODO: format hour
-
-  let minute = "" + time.minute
-  if (time.minute == 0) minute = "00"
-
-  return day + " " + time.hour + ":" + minute
+  return day + " " + hour + ":" + minute + " " + apm
 }
