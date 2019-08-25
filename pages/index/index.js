@@ -22,7 +22,7 @@ Page({
     db.collection("hc").where({
       timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
-      success: function(res) {
+      success: res => {
         _this.setData({ nextTimeHC: formatTime(res.data[0]) })
       }
     })
@@ -31,7 +31,7 @@ Page({
     db.collection("bmc").where({
       timestamp: _.gt(nowTimestamp)
     }).limit(1).get({
-      success: function (res) {
+      success: res => {
         _this.setData({ nextTimeBMC: formatTime(res.data[0]) })
       }
     })
