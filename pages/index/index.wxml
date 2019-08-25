@@ -1,8 +1,12 @@
 <view class="container">
-  <text class="title">Next from HC</text>
-  <text class="time" style="color: {{colorHC}}">{{nextTimeHC}}</text>
-  <text class="hint">{{hintHC}}</text>
-  <text class="title">Next from BMC</text>
-  <text class="time" style="color: {{colorBMC}}">{{nextTimeBMC}}</text>
-  <text class="hint">{{hintBMC}}</text>
+  <view class="campus">
+    <text class="title">HC</text>
+    <text class="time" style="color: {{colorHC}}">{{nextTimeHC}}</text>
+    <text class="hint">{{hintHC}}</text>
+  </view>
+  <view class="campus">
+    <text class="title">BMC</text>
+    <text class="time" style="color: {{colorBMC}}">{{nextTimeBMC}}</text>
+    <text class="hint">{{hintBMC}}</text>
+  </view>
 </view>

@@ -1,3 +1,12 @@
+.campus {
+  margin: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
 .title {
   margin: 50rpx;
   color: black;
