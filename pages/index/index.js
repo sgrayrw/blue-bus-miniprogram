@@ -63,8 +63,7 @@ function getNextTime(page, campus) {
 
 // relative timestamp in this week
 function timestamp(day, hour, minute) {
-  // return day*24*60 + hour*60 + minute
-  return util.randInt(10080)
+  return day*24*60 + hour*60 + minute
 }
 
 // format output of a time record in db
