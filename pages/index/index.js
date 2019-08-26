@@ -17,8 +17,8 @@ Page({
 
   onShow: function() {
     wx.stopPullDownRefresh()
-    getNextTime(this, "hc")
-    getNextTime(this, "bmc")    
+    setNextTime(this, "hc")
+    setNextTime(this, "bmc")    
   },
   
   // disabled for now
@@ -29,7 +29,7 @@ Page({
 
 // TODO: cutoff
 // TODO: Sat daytime HC stokes/south lot difference
-function getNextTime(page, campus) {
+function setNextTime(page, campus) {
   // current relative timestamp in this week
   const now = new Date()
   const nowTimestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
