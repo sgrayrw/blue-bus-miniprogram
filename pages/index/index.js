@@ -10,11 +10,6 @@ Page({
     hintBMC: "",
   },
 
-  onLoad: function() {
-    // init wxcloud
-    wx.cloud.init()
-  },
-
   onShow: function() {
     wx.stopPullDownRefresh()
     setNextTime(this, "hc")
