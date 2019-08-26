@@ -13,5 +13,5 @@
     <text class="time" style="color: {{colorBMC}}">{{nextTimeBMC}}</text>
     <text class="hint">{{hintBMC}}</text>
   </view>
-  
+
 </view>

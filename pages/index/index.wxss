@@ -8,7 +8,7 @@
 }
 
 .title {
-  margin: 70rpx;
+  margin: 50rpx;
   color: black;
   font-size: 60rpx;
 }
@@ -23,7 +23,7 @@
 }
 
 .line{
-  margin: 50rpx 0 0 0;
+  margin: 60rpx 0 0 0;
   width: 600rpx;
   height: 3rpx;
   background-color: #D8D8D8;
