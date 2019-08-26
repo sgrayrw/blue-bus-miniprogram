@@ -74,7 +74,8 @@ function formatTime(time) {
     hour = "" + time.hour
     apm = "am"
   } else if (time.hour < 24) {
-    hour = "" + (time.hour - 12)
+    if (time.hour = 12) hour = "" + time.hour
+    else                hour = "" + (time.hour - 12)
     apm = "pm"
   } else {
     // if hour >= 24, display it as on the next day
