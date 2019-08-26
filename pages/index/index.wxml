@@ -1,12 +1,17 @@
 <view class="container">
+
   <view class="campus">
     <text class="title">HC</text>
     <text class="time" style="color: {{colorHC}}">{{nextTimeHC}}</text>
     <text class="hint">{{hintHC}}</text>
   </view>
+
+  <view class='line'></view>
+  
   <view class="campus">
     <text class="title">BMC</text>
     <text class="time" style="color: {{colorBMC}}">{{nextTimeBMC}}</text>
     <text class="hint">{{hintBMC}}</text>
   </view>
+  
 </view>
