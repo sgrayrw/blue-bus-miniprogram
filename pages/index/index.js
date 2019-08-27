@@ -98,7 +98,7 @@ function formatTime(time) {
   else if (time.day == 5) day = "Fri"
   else if (time.day == 6) day = "Sat"
 
-  return day + " " + hour + ":" + minute + " " + apm
+  return hour + ":" + minute + " " + apm
 }
 
 function getColor(fromTimestamp, toTimestamp) {
