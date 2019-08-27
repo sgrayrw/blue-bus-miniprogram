@@ -7,5 +7,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Blue Bus",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
