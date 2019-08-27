@@ -1,17 +1,34 @@
 <view class="container">
 
   <view class="campus">
+    <!-- title -->
     <text class="title">HC</text>
-    <text class="time" style="color: {{colorHC}}">{{nextTimeHC}}</text>
-    <text class="hint">{{hintHC}}</text>
+
+    <!-- HC times -->
+    <swiper class="swiper" indicator-dots="{indicatorDots}" circular="true">
+      <block wx:for="{{timesHC}}" wx:key="*this">
+        <swiper-item>
+          <text class="time" style="color: {{colorsHC[index]}}">{{item}}</text>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
+  <!-- separator line -->
   <view class='line'></view>
   
   <view class="campus">
+    <!-- title -->
     <text class="title">BMC</text>
-    <text class="time" style="color: {{colorBMC}}">{{nextTimeBMC}}</text>
-    <text class="hint">{{hintBMC}}</text>
+    
+    <!-- BMC times -->
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" circular="true">
+      <block wx:for="{{timesBMC}}" wx:key="*this">
+        <swiper-item>
+          <text class="time" style="color: {{colorsBMC[index]}}">{{item}}</text>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 
 </view>

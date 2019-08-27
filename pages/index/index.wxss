@@ -13,8 +13,16 @@
   font-size: 60rpx;
 }
 
+.swiper {
+  width: 500rpx;
+  height: 160rpx;
+}
+
 .time {
   font-size: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hint {

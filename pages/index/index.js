@@ -2,18 +2,19 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
-    nextTimeHC: "",
-    nextTimeBMC: "",
-    colorHC: "",
-    colorBMC: "",
-    hintHC: "",
-    hintBMC: "",
+    swiperLen: 3, // # of times displayed in the swiper
+    indicatorDots: true,
+
+    timesHC: [],
+    timesBMC: [],
+    colorsHC: [],
+    colorsBMC: [],
   },
 
   onShow: function() {
     wx.stopPullDownRefresh()
-    setNextTime(this, "hc")
-    setNextTime(this, "bmc")    
+    setNextTimes(this, "hc")
+    setNextTimes(this, "bmc")    
   },
   
   // disabled for now
@@ -22,9 +23,8 @@ Page({
   },
 })
 
-// TODO: cutoff
 // TODO: Sat daytime HC stokes/south lot difference
-function setNextTime(page, campus) {
+function setNextTimes(page, campus) {
   // current relative timestamp in this week
   const now = new Date()
   const nowTimestamp = timestamp(now.getDay(), now.getHours(), now.getMinutes())
@@ -33,24 +33,28 @@ function setNextTime(page, campus) {
   const db = wx.cloud.database()
   const _ = db.command
 
-  // next event for campus
+  // next runs for campus
   db.collection(campus).where({
     timestamp: _.gt(nowTimestamp)
-  }).limit(1).get({
+  }).limit(page.data.swiperLen).get({
     success: res => {
-      const nextTime = res.data[0]
-      // set time and color
+      // format each time and get color
+      let times = [], colors = []
+      for (const time of res.data) {
+        times.push(formatTime(time))
+        colors.push(getColor(nowTimestamp, time.timestamp))
+      }
+
+      // set data
       if (campus == "hc") {
         page.setData({
-          nextTimeHC: formatTime(nextTime),
-          colorHC: getColor(nowTimestamp, nextTime.timestamp),
-          hintHC: getHint(nowTimestamp, nextTime.timestamp),
+          timesHC: times,
+          colorsHC: colors,
         })
       } else {
         page.setData({
-          nextTimeBMC: formatTime(nextTime),
-          colorBMC: getColor(nowTimestamp, nextTime.timestamp),
-          hintBMC: getHint(nowTimestamp, nextTime.timestamp),
+          timesBMC: times,
+          colorsBMC: colors,
         })
       }
     }
