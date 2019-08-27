@@ -1,7 +1,12 @@
 const util = require('../../utils/util.js')
+const app = getApp()
+const menuButton = wx.getMenuButtonBoundingClientRect()
 
 Page({
   data: {
+    navBarTop: menuButton.top + 2.5,
+    navBarHeight: menuButton.height - 5,
+
     swiperLen: 3, // # of times displayed in the swiper
     indicatorDotsHC: true,
     indicatorDotsBMC: true,
