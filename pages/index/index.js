@@ -3,7 +3,8 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     swiperLen: 3, // # of times displayed in the swiper
-    indicatorDots: true,
+    indicatorDotsHC: true,
+    indicatorDotsBMC: true,
 
     timesHC: [],
     timesBMC: [],
@@ -50,11 +51,13 @@ function setNextTimes(page, campus) {
         page.setData({
           timesHC: times,
           colorsHC: colors,
+          indicatorDotsHC: times.length > 1,
         })
       } else {
         page.setData({
           timesBMC: times,
           colorsBMC: colors,
+          indicatorDotsBMC: times.length > 1,
         })
       }
     }
