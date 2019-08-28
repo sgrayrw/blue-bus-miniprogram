@@ -1,7 +1,7 @@
 <!-- setting button -->
-<image style="height:{{iconHeight}}px; width:{{iconHeight}}px; margin:{{settingIconTop}}px 0 0 30rpx;" 
+<image style="height:{{settingIconHeight}}px; width:{{settingIconHeight}}px; margin:{{settingIconTop}}px 0 0 {{settingIconLeft}}px;" 
        src="../../imgs/setting-black.png"
-       mode="aspectFit"
+       mode="scaleToFill"
        bindtap="toggleSetting">
 </image>
 

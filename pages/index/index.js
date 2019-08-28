@@ -7,7 +7,9 @@ Page({
   data: {
     // setting icon related
     settingIconTop: menuButton.top + 2.5,
-    iconHeight: menuButton.height - 5,
+    settingIconLeft: sysInfo.screenWidth - menuButton.right,
+    settingIconHeight: 27,
+    
     showSetting: false, // setting menu displayed or not
 
     // container (main area) related
@@ -34,7 +36,8 @@ Page({
     wx.stopPullDownRefresh()
     // update times
     setNextTimes(this, "hc")
-    setNextTimes(this, "bmc")    
+    setNextTimes(this, "bmc")
+    console.log(this.data.settingIconTop)
   },
   
   // disabled for now
