@@ -7,11 +7,24 @@
 
 <!-- setting menu -->
 <view id="setting-menu"
+class="weui-cells"
 wx:if="{{showSetting}}">
-  <view class="swtting-swiper">
-    <text>Number of runs displayed: {{numRuns}}</text>
-    <image class="minus" src="../../imgs/minus.png" style="height:{{iconHeight}}px; width:{{iconHeight}}px" bindtap="minus" wx:if="{{showMinus}}"></image>
-    <image class="plus" src="../../imgs/plus.png" style="height:{{iconHeight}}px; width:{{iconHeight}}px" bindtap="plus" wx:if="{{showPlus}}"></image>
+  <!-- select num of runs displayed -->
+  <view class="weui-cell">
+    <view class="weui-cell__bd">Runs displayed</view>
+    <slider class="weui-cell__ft"
+    show-value value="{{numRuns}}"
+    min="1" max="10"
+    style="margin: 0"
+    bindchange="slideNumRuns"/>
+  </view>
+
+  <!-- switch if time is displayed as colored or not -->
+  <view class="weui-cell">
+    <view class="weui-cell__bd">Display colored time</view>
+    <switch class="weui-cell__ft"
+    checked="{{isColor}}"
+    bindchange="switchColor"/>
   </view>
 </view>
 

@@ -10,10 +10,6 @@ Page({
     iconHeight: menuButton.height - 5,
     showSetting: false, // setting menu displayed or not
 
-    // setting menu related
-    showMinus: true,
-    showPlus: true,
-
     // container (main area) related
     containerHeight: sysInfo.screenHeight - menuButton.bottom - 2.5,
     containerColor: "white",
@@ -24,7 +20,8 @@ Page({
     indicatorDotsBMC: true,
     swiperIndex: 0,
 
-    // data displayed
+    // data displayed related
+    isColor: true,
     timesHC: [],
     timesBMC: [],
     colorsHC: [],
@@ -33,8 +30,8 @@ Page({
 
   // called when this page is shown
   onShow: function() {
+    // stop refresh animation
     wx.stopPullDownRefresh()
-
     // update times
     setNextTimes(this, "hc")
     setNextTimes(this, "bmc")    
@@ -68,41 +65,23 @@ Page({
     })
   },
 
-  // setting: minus num of runs displayed
-  minus: function() {
-    // reset swiper index
-    this.setData({ swiperIndex: 0 })
-
-    this.setData({ numRuns: this.data.numRuns - 1 })
-
-    // hide minus button if `numRuns` is 1
-    if (this.data.numRuns == 1) {
-      this.setData({ showMinus: false })
+  // setting: listen slider events
+  slideNumRuns: function(e) {
+    const newNumRuns = e.detail.value
+    // reset swiper index if `numRuns` is decreased
+    if (newNumRuns < this.data.numRuns) {
+      this.setData({ swiperIndex: 0 })
     }
-
-    // show plus button if `numRuns` < 10
-    if (!this.data.showPlus && this.data.numRuns < 10) {
-      this.setData({ showPlus: true })
-    }
-
+    // set new data
+    this.setData({ numRuns: newNumRuns })
     // refresh page
     this.onShow()
   },
 
-  // setting: plus num of runs displayed
-  plus: function() {
-    this.setData({ numRuns: this.data.numRuns + 1 })
-
-    // show minus button if not already shown
-    if (!this.data.showMinus) {
-      this.setData({ showMinus: true })
-    }
-
-    // hide plus button if `numRuns` >= 10
-    if (this.data.numRuns == 10) {
-      this.setData({ showPlus: false })
-    }
-
+  // setting: listen switch events
+  switchColor: function(e) {
+    // set new data
+    this.setData({ isColor: !this.data.isColor })
     // refresh page
     this.onShow()
   },
@@ -127,7 +106,12 @@ function setNextTimes(page, campus) {
       let times = [], colors = []
       for (const time of res.data) {
         times.push(formatTime(time))
-        colors.push(getColor(nowTimestamp, time.timestamp))
+
+        if (page.data.isColor) {
+          colors.push(getColor(nowTimestamp, time.timestamp))
+        } else {
+          colors.push("black")
+        }
       }
 
       // set data

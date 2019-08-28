@@ -1,24 +1,16 @@
 /* TODO: grey container background? / card view for campus? */
 
 #setting-menu {
+  margin: 0;
   background-color: white;
   width: 100%;
-  height: 150rpx;
   position: absolute;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
 }
 
-.setting-swiper {
-  display: flex;
-  flex-direction: row;
+slider {
+  width: 400rpx;
 }
-
-.plus .minus {}
 
 .hc {
   margin: 100rpx 0 0 0;
