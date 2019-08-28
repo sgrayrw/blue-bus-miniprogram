@@ -37,7 +37,6 @@ Page({
     // update times
     setNextTimes(this, "hc")
     setNextTimes(this, "bmc")
-    console.log(this.data.settingIconTop)
   },
   
   // disabled for now
