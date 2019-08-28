@@ -1,22 +1,36 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const menuButton = wx.getMenuButtonBoundingClientRect()
+const sysInfo = wx.getSystemInfoSync()
 
 Page({
   data: {
-    navBarTop: menuButton.top + 2.5,
-    navBarHeight: menuButton.height - 5,
+    // setting icon related
+    settingIconTop: menuButton.top + 2.5,
+    iconHeight: menuButton.height - 5,
+    showSetting: false, // setting menu displayed or not
 
-    swiperLen: 3, // # of times displayed in the swiper
+    // setting menu related
+    showMinus: true,
+    showPlus: true,
+
+    // container (main area) related
+    containerHeight: sysInfo.screenHeight - menuButton.bottom - 2.5,
+    containerColor: "white",
+
+    // swiper related
+    numRuns: 3, // num of runs displayed in the swiper
     indicatorDotsHC: true,
     indicatorDotsBMC: true,
 
+    // data displayed
     timesHC: [],
     timesBMC: [],
     colorsHC: [],
     colorsBMC: [],
   },
 
+  // called when this page is shown
   onShow: function() {
     wx.stopPullDownRefresh()
     setNextTimes(this, "hc")
@@ -25,6 +39,65 @@ Page({
   
   // disabled for now
   onPullDownRefresh: function() {
+    this.onShow()
+  },
+
+  // toggle setting menu
+  toggleSetting: function() {
+    if (this.data.showSetting) {
+      this.setData({
+        showSetting: false,
+        containerColor: "white",
+      })
+    } else {
+      this.setData({
+        showSetting: true,
+        containerColor: "#eee",
+      })
+    }
+  },
+
+  // hide setting menu if user touches elsewhere
+  hideSetting: function() {
+    this.setData({
+      showSetting: false,
+      containerColor: "white",
+    })
+  },
+
+  // setting: minus num of runs displayed
+  minus: function() {
+    this.setData({ numRuns: this.data.numRuns - 1 })
+
+    // hide minus button if `numRuns` is 1
+    if (this.data.numRuns == 1) {
+      this.setData({ showMinus: false })
+    }
+
+    // show plus button if `numRuns` < 10
+    if (!this.data.showPlus && this.data.numRuns < 10) {
+      this.setData({ showPlus: true })
+    }
+
+    // refresh page
+    this.onShow()
+  },
+
+  // setting: plus num of runs displayed
+  plus: function() {
+    this.setData({ numRuns: this.data.numRuns + 1 })
+
+    // show minus button if not already shown
+    if (!this.data.showMinus) {
+      this.setData({ showMinus: true })
+    }
+
+    // hide plus button if `numRuns` >= 10
+    if (this.data.numRuns == 10) {
+      this.setData({ showPlus: false })
+    }
+
+    // refresh page
     this.onShow()
   },
 })
@@ -42,7 +115,7 @@ function setNextTimes(page, campus) {
   // next runs for campus
   db.collection(campus).where({
     timestamp: _.gt(nowTimestamp)
-  }).limit(page.data.swiperLen).get({
+  }).limit(page.data.numRuns).get({
     success: res => {
       // format each time and get color
       let times = [], colors = []
@@ -94,14 +167,14 @@ function formatTime(time) {
   let minute = "" + time.minute
   if (time.minute < 10) minute = "0" + minute
 
-  let day
-  if      (time.day == 0) day = "Sun"
-  else if (time.day == 1) day = "Mon"
-  else if (time.day == 2) day = "Tue"
-  else if (time.day == 3) day = "Wed"
-  else if (time.day == 4) day = "Thu"
-  else if (time.day == 5) day = "Fri"
-  else if (time.day == 6) day = "Sat"
+  // let day
+  // if      (time.day == 0) day = "Sun"
+  // else if (time.day == 1) day = "Mon"
+  // else if (time.day == 2) day = "Tue"
+  // else if (time.day == 3) day = "Wed"
+  // else if (time.day == 4) day = "Thu"
+  // else if (time.day == 5) day = "Fri"
+  // else if (time.day == 6) day = "Sat"
 
   return hour + ":" + minute + " " + apm
 }
@@ -111,10 +184,4 @@ function getColor(fromTimestamp, toTimestamp) {
   if      (diff < 10) return "red"
   else if (diff < 15) return "orange"
   else                return "green"
-}
-
-function getHint(fromTimestamp, toTimestamp) {
-  const diff = toTimestamp - fromTimestamp
-  if (diff < 10) return "还有" + diff + "分钟，gkd"
-  else           return ""
 }

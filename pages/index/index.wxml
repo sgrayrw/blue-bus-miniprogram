@@ -1,17 +1,33 @@
-<!-- setting tab -->
-<image class="setting" style="height:{{navBarHeight}}px; width: {{navBarHeight}}px; margin:{{navBarTop}}px 0 0 30rpx" src="../../imgs/setting-black.png" mode="aspectFit"></image>
+<!-- setting button -->
+<image style="height:{{iconHeight}}px; width:{{iconHeight}}px; margin:{{settingIconTop}}px 0 0 30rpx;" 
+       src="../../imgs/setting-black.png"
+       mode="aspectFit"
+       bindtap="toggleSetting">
+</image>
 
-<view class="container">
+<!-- setting menu -->
+<view id="setting-menu"
+wx:if="{{showSetting}}">
+  <view class="swtting-swiper">
+    <text>Number of runs displayed: {{numRuns}}</text>
+    <image class="minus" src="../../imgs/minus.png" style="height:{{iconHeight}}px; width:{{iconHeight}}px" bindtap="minus" wx:if="{{showMinus}}"></image>
+    <image class="plus" src="../../imgs/plus.png" style="height:{{iconHeight}}px; width:{{iconHeight}}px" bindtap="plus" wx:if="{{showPlus}}"></image>
+  </view>
+</view>
 
-  <view class="campus">
+<view class="container"
+style="height:{{containerHeight}}px; background-color: {{containerColor}}"
+bindtap="hideSetting">
+  <!-- hc -->
+  <view class="hc">
     <!-- title -->
     <text class="title">HC</text>
 
-    <!-- HC times -->
+    <!-- hc times -->
     <swiper class="swiper" indicator-dots="{{indicatorDotsHC}}" circular="true">
       <block wx:for="{{timesHC}}" wx:key="*this">
         <swiper-item>
-          <text class="time" style="color: {{colorsHC[index]}}">{{item}}</text>
+          <text class="time" style="color:{{colorsHC[index]}}">{{item}}</text>
         </swiper-item>
       </block>
     </swiper>
@@ -20,18 +36,23 @@
   <!-- separator line -->
   <view class='line'></view>
   
-  <view class="campus">
+  <!-- bmc -->
+  <view class="bmc">
     <!-- title -->
     <text class="title">BMC</text>
     
-    <!-- BMC times -->
+    <!-- bmc times -->
     <swiper class="swiper" indicator-dots="{{indicatorDotsBMC}}" circular="true">
       <block wx:for="{{timesBMC}}" wx:key="*this">
         <swiper-item>
-          <text class="time" style="color: {{colorsBMC[index]}}">{{item}}</text>
+          <text class="time" style="color:{{colorsBMC[index]}}">{{item}}</text>
         </swiper-item>
       </block>
     </swiper>
   </view>
 
+  <!-- footer -->
+  <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-footer__text">Copyright © 2019 rayrw</view>
+  </view>
 </view>
