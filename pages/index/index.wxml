@@ -24,7 +24,7 @@ bindtap="hideSetting">
     <text class="title">HC</text>
 
     <!-- hc times -->
-    <swiper class="swiper" indicator-dots="{{indicatorDotsHC}}" circular="true">
+    <swiper class="swiper" indicator-dots="{{indicatorDotsHC}}" circular="true" current="{{swiperIndex}}">
       <block wx:for="{{timesHC}}" wx:key="*this">
         <swiper-item>
           <text class="time" style="color:{{colorsHC[index]}}">{{item}}</text>
@@ -42,7 +42,7 @@ bindtap="hideSetting">
     <text class="title">BMC</text>
     
     <!-- bmc times -->
-    <swiper class="swiper" indicator-dots="{{indicatorDotsBMC}}" circular="true">
+    <swiper class="swiper" indicator-dots="{{indicatorDotsBMC}}" circular="true" current="{{swiperIndex}}">
       <block wx:for="{{timesBMC}}" wx:key="*this">
         <swiper-item>
           <text class="time" style="color:{{colorsBMC[index]}}">{{item}}</text>

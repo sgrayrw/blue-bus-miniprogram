@@ -22,6 +22,7 @@ Page({
     numRuns: 3, // num of runs displayed in the swiper
     indicatorDotsHC: true,
     indicatorDotsBMC: true,
+    swiperIndex: 0,
 
     // data displayed
     timesHC: [],
@@ -33,6 +34,8 @@ Page({
   // called when this page is shown
   onShow: function() {
     wx.stopPullDownRefresh()
+
+    // update times
     setNextTimes(this, "hc")
     setNextTimes(this, "bmc")    
   },
@@ -67,6 +70,9 @@ Page({
 
   // setting: minus num of runs displayed
   minus: function() {
+    // reset swiper index
+    this.setData({ swiperIndex: 0 })
+
     this.setData({ numRuns: this.data.numRuns - 1 })
 
     // hide minus button if `numRuns` is 1
