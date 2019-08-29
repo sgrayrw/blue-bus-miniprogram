@@ -1,9 +1,5 @@
-<!-- setting button -->
-<image style="height:{{settingIconHeight}}px; width:{{settingIconHeight}}px; margin:{{settingIconTop}}px 0 0 {{settingIconLeft}}px;" 
-       src="../../imgs/setting-black.png"
-       mode="scaleToFill"
-       bindtap="toggleSetting">
-</image>
+<!-- custom navigation bar: setting icon and title `Blue Bus` -->
+<navBar title="Blue Bus" home="{{true}}" bindhome="toggleSetting"></navBar>
 
 <!-- setting menu -->
 <view id="setting-menu"

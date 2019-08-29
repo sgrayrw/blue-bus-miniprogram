@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "navBar": "miniprograms-navigation-bar"
+  },
   "enablePullDownRefresh": false,
   "disableScroll": true
 }

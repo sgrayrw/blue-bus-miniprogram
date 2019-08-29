@@ -1,0 +1,22 @@
+{
+  "name": "blue-bus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgrayrw/Blue-Bus-Miniprogram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgrayrw/Blue-Bus-Miniprogram/issues"
+  },
+  "homepage": "https://github.com/sgrayrw/Blue-Bus-Miniprogram#readme",
+  "dependencies": {
+    "miniprograms-navigation-bar": "^1.0.1"
+  }
+}

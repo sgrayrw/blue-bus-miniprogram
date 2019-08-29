@@ -5,15 +5,10 @@ const sysInfo = wx.getSystemInfoSync()
 
 Page({
   data: {
-    // setting icon related
-    settingIconTop: menuButton.top + 2.5,
-    settingIconLeft: sysInfo.screenWidth - menuButton.right,
-    settingIconHeight: 27,
-    
     showSetting: false, // setting menu displayed or not
 
     // container (main area) related
-    containerHeight: sysInfo.screenHeight - menuButton.bottom - 2.5,
+    containerHeight: sysInfo.screenHeight - menuButton.bottom,
     containerColor: "white",
 
     // swiper related
