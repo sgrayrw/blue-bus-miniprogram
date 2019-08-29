@@ -48,7 +48,7 @@ slider {
   align-items: center;
 }
 
-.line{
+.line {
   margin: 0rpx 0 0rpx 0;
   width: 600rpx;
   height: 3rpx;
