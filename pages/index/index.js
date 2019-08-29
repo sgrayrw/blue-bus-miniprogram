@@ -82,6 +82,13 @@ Page({
     // refresh page
     this.onShow()
   },
+
+  // footer: copy github link
+  copyGitLink: function(e) {
+    wx.setClipboardData({
+      data: "https://github.com/sgrayrw/blue-bus-miniprogram",
+    })
+  },
 })
 
 // TODO: Sat daytime HC stokes/south lot difference

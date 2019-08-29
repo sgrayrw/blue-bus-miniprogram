@@ -5,7 +5,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Blue Bus",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },

@@ -62,6 +62,7 @@ bindtap="hideSetting">
 
   <!-- footer -->
   <view class="weui-footer weui-footer_fixed-bottom">
-      <view class="weui-footer__text">Copyright © 2019 rayrw</view>
+    <text class="weui-footer__link" bindtap="copyGitLink">Github link</text>
+    <view class="weui-footer__text">Copyright © 2019 rayrw</view>
   </view>
 </view>
