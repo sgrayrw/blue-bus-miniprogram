@@ -27,16 +27,9 @@ Page({
 
   // called when this page is shown
   onShow: function() {
-    // stop refresh animation
-    wx.stopPullDownRefresh()
     // update times
     setNextTimes(this, "hc")
     setNextTimes(this, "bmc")
-  },
-  
-  // disabled for now
-  onPullDownRefresh: function() {
-    this.onShow()
   },
 
   // toggle setting menu
@@ -65,12 +58,15 @@ Page({
   // setting: listen slider events
   slideNumRuns: function(e) {
     const newNumRuns = e.detail.value
+
     // reset swiper index if `numRuns` is decreased
     if (newNumRuns < this.data.numRuns) {
       this.setData({ swiperIndex: 0 })
     }
+
     // set new data
     this.setData({ numRuns: newNumRuns })
+
     // refresh page
     this.onShow()
   },
@@ -79,6 +75,7 @@ Page({
   switchColor: function(e) {
     // set new data
     this.setData({ isColor: !this.data.isColor })
+    
     // refresh page
     this.onShow()
   },
