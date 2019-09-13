@@ -5,6 +5,7 @@ const sysInfo = wx.getSystemInfoSync()
 
 Page({
   data: {
+    settingLoaded: false, // setting info loaded from storage or not
     showSetting: false, // setting menu displayed or not
 
     // container (main area) related
@@ -25,21 +26,42 @@ Page({
     colorsBMC: [],
   },
 
-  // called when this page is shown
+  // page shwon
   onShow: function() {
-    // update times
-    setNextTimes(this, "hc")
-    setNextTimes(this, "bmc")
+    if (!this.data.settingLoaded) {
+      wx.getStorage({
+        key: "setting",
+        success: res => {
+          // set setting data
+          this.setData ({
+            settingLoaded: true,
+            numRuns: res.data.numRuns,
+            isColor: res.data.isColor,
+          })
+          // update times
+          setNextTimes(this, "hc")
+          setNextTimes(this, "bmc")
+        },
+        fail: err => {
+          // setting data not found, leave the values default
+          this.setData({ settingLoaded: true })
+          // update times
+          setNextTimes(this, "hc")
+          setNextTimes(this, "bmc")
+        }
+      })
+    } else {
+      // setting already loaded, update times
+      setNextTimes(this, "hc")
+      setNextTimes(this, "bmc")
+    }
   },
 
   // toggle setting menu
   toggleSetting: function() {
-    if (this.data.showSetting) {
-      this.setData({
-        showSetting: false,
-        containerColor: "white",
-      })
-    } else {
+    if (this.data.showSetting) { // hide menu
+      this.hideSetting()
+    } else { // show menu
       this.setData({
         showSetting: true,
         containerColor: "#eee",
@@ -47,8 +69,17 @@ Page({
     }
   },
 
-  // hide setting menu if user touches elsewhere
+  // hide setting menu
   hideSetting: function() {
+    // save setting data to storage
+    wx.setStorage({
+      key: "setting",
+      data: {
+        numRuns: this.data.numRuns,
+        isColor: this.data.isColor,
+      },
+    })
+
     this.setData({
       showSetting: false,
       containerColor: "white",

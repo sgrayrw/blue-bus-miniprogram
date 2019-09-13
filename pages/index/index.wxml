@@ -30,7 +30,7 @@ bindtap="hideSetting">
   <!-- hc -->
   <view class="hc">
     <!-- title -->
-    <text class="title">HC</text>
+    <text class="title">to BMC</text>
 
     <!-- hc times -->
     <swiper class="swiper" indicator-dots="{{indicatorDotsHC}}" circular="true" current="{{swiperIndex}}">
@@ -48,7 +48,7 @@ bindtap="hideSetting">
   <!-- bmc -->
   <view class="bmc">
     <!-- title -->
-    <text class="title">BMC</text>
+    <text class="title">to HC</text>
     
     <!-- bmc times -->
     <swiper class="swiper" indicator-dots="{{indicatorDotsBMC}}" circular="true" current="{{swiperIndex}}">
