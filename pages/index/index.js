@@ -26,7 +26,7 @@ Page({
     colorsBMC: [],
   },
 
-  // page shwon
+  // page shown
   onShow: function() {
     if (!this.data.settingLoaded) {
       wx.getStorage({
