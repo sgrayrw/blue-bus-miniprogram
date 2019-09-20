@@ -7,3 +7,11 @@
 - Download development tools [here](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
 - Clone this repo and run `npm install` to install npm dependencies
 - Make pull requests
+
+## Screenshots
+
+
+
+main page                  |  setting menu
+:-------------------------:|:-------------------------:
+![](imgs/screenshots/main-page.png)  |  ![](imgs/screenshots/setting-menu.png)
