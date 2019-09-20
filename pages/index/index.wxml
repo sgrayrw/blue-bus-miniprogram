@@ -22,6 +22,13 @@ wx:if="{{showSetting}}">
     checked="{{isColor}}"
     bindchange="switchColor"/>
   </view>
+
+  <!-- feedback contact -->
+  <view class="weui-cell">
+    <view class="weui-cell__bd">Feedback & Buy me coffee</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view> 
+    <button class="contact-btn" open-type="contact">button</button> 
+  </view>
 </view>
 
 <view class="container"

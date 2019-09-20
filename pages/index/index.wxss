@@ -8,6 +8,14 @@
   z-index: 1;
 }
 
+.contact-btn {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  background: salmon;
+  opacity: 0;
+}
+
 slider {
   width: 400rpx;
 }
