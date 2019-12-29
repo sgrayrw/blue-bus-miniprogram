@@ -2,6 +2,10 @@
 
 [Schedule source](https://www.brynmawr.edu/transportation/blue-bus-bi-co)
 
+## Installation
+
+See [releases](https://github.com/sgrayrw/blue-bus-miniprogram/releases)
+
 ## Contribution
 
 - Download development tools [here](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
